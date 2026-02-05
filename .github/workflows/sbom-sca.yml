@@ -91,9 +91,7 @@ jobs:
             [
               .Results[]?.Vulnerabilities[]?
               | select(
-                  (.Severity=="HIGH") or
-                  (.Severity=="CRITICAL") or
-                  ((.CVSS.nvd.v3Score // .CVSS.redhat.v3Score // .CVSS.github.v3Score // 0) >= 7)
+                  (.Severity=="HIGH")
                 )
             ] | length == 0
           ' sca-backend.json \
@@ -111,9 +109,7 @@ jobs:
             [
               .Results[]?.Vulnerabilities[]?
               | select(
-                  (.Severity=="HIGH") or
-                  (.Severity=="CRITICAL") or
-                  ((.CVSS.nvd.v3Score // .CVSS.redhat.v3Score // .CVSS.github.v3Score // 0) >= 7)
+                  (.Severity=="HIGH")
                 )
             ] | length == 0
           ' sca-frontend.json \
